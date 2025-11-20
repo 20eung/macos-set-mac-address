@@ -45,8 +45,8 @@ sudo vi /usr/local/bin/set_mac_address.sh
 #!/bin/bash
 
 # 설정 변수
-INTERFACE="[인터페이스 이름]"
-TARGET_MAC="[원하는 MAC 주소]"
+INTERFACE="en9"                 # [인터페이스 이름]
+TARGET_MAC="f8:e4:3b:04:23:20"  # [원하는 MAC 주소]
 
 # 무한 루프 시작 (시스템이 켜져 있는 동안 계속 감시)
 while true; do
