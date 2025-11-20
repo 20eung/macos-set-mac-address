@@ -17,8 +17,13 @@ Ethernet Address: 9c:eb:e8:a8:dc:e9
 ## 2. MAC 주소 수동 설정 명령
 
 ```bash
+sudo ifconfig [인터페이스이름] ether [원하는 MAC 주소]
+```
+예제
+```bash
 sudo ifconfig en9 ether f8:e4:3b:04:23:20
 ```
+
 
 ---
 
@@ -34,14 +39,14 @@ Launch Daemon은 시스템 부팅 시 또는 특정 조건에서 스크립트를
 sudo vi /usr/local/bin/set_mac_address.sh
 ```
 
-#### 2. 편집기에 다음 내용을 입력하고 저장. **[인터페이스 이름]**과 **[원하는 MAC 주소]**를 실제 값으로 교체
+#### 2. 편집기에 다음 내용을 입력하고 저장. [인터페이스 이름]과 [원하는 MAC 주소]를 실제 값으로 교체
 
 ```bash
 #!/bin/bash
 
 # 설정 변수
-INTERFACE="en9"
-TARGET_MAC="f8:e4:3b:04:23:20"
+INTERFACE="[인터페이스 이름]"
+TARGET_MAC="[원하는 MAC 주소]"
 
 # 무한 루프 시작 (시스템이 켜져 있는 동안 계속 감시)
 while true; do
@@ -104,7 +109,7 @@ sudo vi /Library/LaunchDaemons/com.local.setmac.plist
 
 ### C. Launch Daemon 로드
 
-#### 1. 생성한 Plist 파일의 소유권을 ```root```로 변경, 권한을 644로 변경 (소유자만 쓰기 가능, 나머지는 읽기만 가능)
+#### 1. 생성한 Plist 파일의 소유권을 ```root```로 변경, 권한을 ```644```로 변경 (소유자만 쓰기 가능, 나머지는 읽기만 가능)
 
 ```bash
 sudo chown root:wheel /Library/LaunchDaemons/com.local.setmac.plist
